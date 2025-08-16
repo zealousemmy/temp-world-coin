@@ -90,7 +90,7 @@ const SignupPageContents = () => {
             <div className="sign__content ms-md-5 ms-xxl-0 pt-120 pb-120">
               <div className="head_part">
                 <a href="/">
-                  <img src="/w-coin-removebg-preview.png" alt="Logo" />
+                  <img src="/w-c-removebg-preview.png" alt="Logo" />
                 </a>
                 <h5 className="mt-5 mt-lg-6">Sign up to Your Account</h5>
               </div>

@@ -722,7 +722,7 @@ const IndexPage = () => {
                   <h3>News &amp; Analysis</h3>
                 </div>
                 <a
-                  href="/blog"
+                  href="/market-data"
                   className="cmn-btn link fs-six-up gap-2 gap-lg-3 align-items-center">
                   See all <i className="ti ti-arrow-right fs-four" />
                 </a>
@@ -759,7 +759,7 @@ const IndexPage = () => {
                       </span>
                     </div>
                     <div className="blog_news__content py-6 py-lg-7 py-xxl-8 px-4 px-lg-5 px-xxl-6">
-                      <a href="/blog">
+                      <a href="/market-data">
                         <h5 className="mb-4 mb-lg-5">{b.title}</h5>
                       </a>
                       <div className="fs-seven fw_500 d-flex row-gap-0 flex-wrap gap-3 mb-4 mb-lg-5">
@@ -767,7 +767,7 @@ const IndexPage = () => {
                       </div>
                       <p>Quick, practical insights for better crypto habits.</p>
                       <a
-                        href="/blog"
+                        href="/market-data"
                         className="link fs-five fw-semibold d-flex gap-2 gap-lg-3 align-items-center mt-6 mt-lg-8">
                         Continue Reading <i className="ti ti-arrow-right" />
                       </a>

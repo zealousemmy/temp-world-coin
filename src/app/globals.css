@@ -72,7 +72,7 @@ body {
 
 /* Card look */
 .tm-card {
-  width: clamp(180px, 42vw, 360px);
+  width: clamp(280px, 42vw, 560px);
   padding: 28px;
   border-radius: 14px;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
@@ -114,11 +114,11 @@ body {
 /* spacing tweaks */
 @media (min-width: 992px) {
   .testimonial-track {
-    gap: 22px;
+    gap: 32px;
   }
   .tm-card {
     padding: 32px;
-    width: clamp(380px, 102vw, 660px);
+    width: clamp(180px, 42vw, 360px);
   }
 }
 
