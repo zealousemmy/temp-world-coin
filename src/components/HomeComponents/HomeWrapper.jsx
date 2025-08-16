@@ -4,6 +4,7 @@ import NewHomeFooter from "./NewHomeFooter";
 import TradingViewTicker from "../TradindViewTicker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import SiteNav from "./SiteNav";
 
 const HomeWrapper = ({ children, hasNavFooter = true }) => {
   return (
@@ -41,7 +42,8 @@ const HomeWrapper = ({ children, hasNavFooter = true }) => {
       </head>
       {hasNavFooter ? (
         <>
-          <HeaderNav />
+          {/* <HeaderNav /> */}
+          <SiteNav />
           {children}
           <TradingViewTicker />
           <NewHomeFooter />
