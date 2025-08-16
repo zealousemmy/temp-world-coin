@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NAV_LINKS = [
+const NAV = [
   { href: "/", label: "Home" },
   { href: "/market-data", label: "Markets" },
   { href: "/about-us", label: "About" },
@@ -12,57 +12,40 @@ const NAV_LINKS = [
   { href: "/roadmap", label: "Roadmap" },
 ];
 
+const GOLD = "#ffcb14";
+const INK = "#0b0b0b";
+const OFFWHITE = "#f2f4f5";
+
 export default function HeaderNav() {
   const pathname = usePathname() || "/";
   const [open, setOpen] = useState(false);
 
-  // lock/unlock body scroll when drawer is open
-  useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
-  // close on route change + ESC
+  // Close drawer when route changes, lock body scroll when open
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
   useEffect(() => {
-    const onEsc = (e) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    window.addEventListener("keydown", onEsc);
-    return () => window.removeEventListener("keydown", onEsc);
-  }, []);
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => (document.body.style.overflow = "");
+  }, [open]);
 
-  const isActive = useCallback(
-    (href) => (href === "/" ? pathname === "/" : pathname.startsWith(href)),
-    [pathname]
-  );
+  const isActive = (href) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header className="wc-header">
       <div className="container">
         <div className="wc-bar">
-          {/* Left: Brand */}
-          <Link href="/" className="wc-brand">
-            <img
-              src="/w-c-removebg-preview.png"
-              alt="World Coin"
-              className="wc-logo"
-            />
+          {/* Brand (left) */}
+          <Link href="/" className="wc-brand" aria-label="World Coin Home">
+            <img src="/w-c-removebg-preview.png" alt="" className="wc-logo" />
             <span className="wc-title">World Coin</span>
           </Link>
 
-          {/* Center: Desktop Nav */}
-          <nav className="wc-links">
-            {NAV_LINKS.map(({ href, label }) => (
+          {/* Center links (desktop) */}
+          <nav className="wc-links" aria-label="Primary">
+            {NAV.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
@@ -72,7 +55,7 @@ export default function HeaderNav() {
             ))}
           </nav>
 
-          {/* Right: Desktop actions */}
+          {/* Right actions (desktop) */}
           <div className="wc-actions">
             <Link href="/sign-in" className="wc-login">
               Login
@@ -82,10 +65,12 @@ export default function HeaderNav() {
             </Link>
           </div>
 
-          {/* Mobile: burger */}
+          {/* Burger (mobile only) */}
           <button
-            aria-label={open ? "Close menu" : "Open menu"}
             className={`wc-burger ${open ? "open" : ""}`}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-controls="wc-drawer"
+            aria-expanded={open ? "true" : "false"}
             onClick={() => setOpen((v) => !v)}>
             <span />
             <span />
@@ -96,30 +81,26 @@ export default function HeaderNav() {
 
       {/* Mobile drawer */}
       <div
+        id="wc-drawer"
         className={`wc-drawer ${open ? "open" : ""}`}
         role="dialog"
         aria-modal="true">
         <div className="wc-drawer-head">
-          <Link href="/" className="wc-brand">
-            <img
-              src="/w-c-removebg-preview.png"
-              alt="World Coin"
-              className="wc-logo"
-            />
+          <Link href="/" className="wc-brand" onClick={() => setOpen(false)}>
+            <img src="/w-c-removebg-preview.png" alt="" className="wc-logo" />
             <span className="wc-title">World Coin</span>
           </Link>
-
           <button
-            aria-label="Close menu"
             className="wc-close"
+            aria-label="Close menu"
             onClick={() => setOpen(false)}>
             <span />
             <span />
           </button>
         </div>
 
-        <nav className="wc-drawer-links">
-          {NAV_LINKS.map(({ href, label }) => (
+        <nav className="wc-drawer-links" aria-label="Mobile">
+          {NAV.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
@@ -146,9 +127,15 @@ export default function HeaderNav() {
         </div>
       </div>
 
-      {/* Scoped styles */}
+      {/* Background overlay (click to close) */}
+      <button
+        className={`wc-overlay ${open ? "open" : ""}`}
+        aria-hidden={open ? "false" : "true"}
+        tabIndex={-1}
+        onClick={() => setOpen(false)}
+      />
+
       <style jsx>{`
-        /* wrapper */
         .wc-header {
           position: sticky;
           top: 0;
@@ -156,20 +143,17 @@ export default function HeaderNav() {
           background: transparent;
         }
 
-        /* black rounded bar */
         .wc-bar {
           margin: 22px auto 0;
-          background: #0b0b0b;
+          background: ${INK};
           border-radius: 14px;
           display: grid;
           grid-template-columns: auto 1fr auto;
           align-items: center;
           gap: 12px;
           padding: 14px 18px;
-          position: relative;
         }
 
-        /* brand */
         .wc-brand {
           display: inline-flex;
           align-items: center;
@@ -183,15 +167,15 @@ export default function HeaderNav() {
         }
         .wc-title {
           font-weight: 800;
-          color: #f2f4f5;
+          color: ${OFFWHITE};
           font-size: 20px;
           letter-spacing: 0.2px;
         }
 
-        /* center links (desktop) */
         .wc-links {
           justify-self: center;
           display: none;
+          gap: 6px;
         }
         .wc-link {
           color: #e9ebef;
@@ -200,29 +184,28 @@ export default function HeaderNav() {
           padding: 10px 16px;
           border-radius: 8px;
           display: inline-block;
-          transition: color 0.2s ease;
+          transition: color 0.18s ease;
         }
         .wc-link:hover {
-          color: #ffcb14;
+          color: ${GOLD};
         }
         .wc-link.active {
-          color: #ffcb14; /* gold highlight like screenshot */
+          color: ${GOLD};
         }
 
-        /* right actions (desktop) */
         .wc-actions {
           display: none;
           align-items: center;
           gap: 14px;
         }
         .wc-login {
-          color: #f2f4f5;
+          color: ${OFFWHITE};
           text-decoration: none;
           font-weight: 800;
         }
         .wc-cta {
-          background: #ffcb14;
-          color: #0b0b0b;
+          background: ${GOLD};
+          color: ${INK};
           text-decoration: none;
           font-weight: 800;
           padding: 10px 18px;
@@ -232,7 +215,6 @@ export default function HeaderNav() {
           justify-content: center;
         }
 
-        /* burger (mobile only) */
         .wc-burger {
           display: inline-flex;
           flex-direction: column;
@@ -248,7 +230,7 @@ export default function HeaderNav() {
         .wc-burger span {
           height: 3px;
           width: 100%;
-          background: #ffcb14;
+          background: ${GOLD};
           border-radius: 3px;
           transition: transform 0.25s ease, opacity 0.25s ease;
         }
@@ -262,17 +244,17 @@ export default function HeaderNav() {
           transform: translateY(-9px) rotate(-45deg);
         }
 
-        /* mobile drawer */
         .wc-drawer {
           position: fixed;
           inset: 0;
-          background: #0b0b0b;
+          background: ${INK};
           transform: translateY(-100%);
           transition: transform 0.28s ease;
           padding: 20px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          z-index: 1001;
         }
         .wc-drawer.open {
           transform: translateY(0);
@@ -283,8 +265,6 @@ export default function HeaderNav() {
           justify-content: space-between;
           padding-right: 6px;
         }
-
-        /* close button (gold X) */
         .wc-close {
           position: relative;
           width: 28px;
@@ -299,7 +279,7 @@ export default function HeaderNav() {
           left: 0;
           width: 100%;
           height: 3px;
-          background: #ffcb14;
+          background: ${GOLD};
           border-radius: 3px;
         }
         .wc-close span:first-child {
@@ -309,7 +289,6 @@ export default function HeaderNav() {
           transform: translateY(-50%) rotate(-45deg);
         }
 
-        /* drawer links */
         .wc-drawer-links {
           display: flex;
           flex-direction: column;
@@ -317,40 +296,53 @@ export default function HeaderNav() {
           margin-top: 24px;
         }
         .wc-drawer-link {
-          color: #f2f4f5;
+          color: ${OFFWHITE};
           text-decoration: none;
           font-weight: 900;
           font-size: 22px;
         }
         .wc-drawer-link.active {
-          color: #ffcb14;
+          color: ${GOLD};
         }
 
-        /* drawer bottom actions */
         .wc-drawer-actions {
           display: flex;
           align-items: center;
           justify-content: flex-end;
           gap: 18px;
-          padding: 10px 4px 6px;
+          padding: 8px 4px 4px;
         }
         .wc-drawer-actions .wc-cta {
           padding: 12px 22px;
           border-radius: 18px;
         }
 
-        /* breakpoints */
+        .wc-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.35);
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s ease;
+          z-index: 1000;
+        }
+        .wc-overlay.open {
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        /* Desktop breakpoint */
         @media (min-width: 992px) {
-          .wc-burger,
-          .wc-drawer {
-            display: none;
-          }
           .wc-links {
-            display: flex;
-            gap: 4px;
+            display: inline-flex;
           }
           .wc-actions {
             display: inline-flex;
+          }
+          .wc-burger,
+          .wc-drawer,
+          .wc-overlay {
+            display: none;
           }
         }
       `}</style>
