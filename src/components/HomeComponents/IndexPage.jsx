@@ -8,6 +8,8 @@ import HomePlansDisplay from "./HomePlansDisplay";
 import StartInvestment from "./ReadyToStart";
 import ReferralBonusSection from "./ReferralBonus";
 import PlatformStats from "./PlatformStats";
+import TestimonialsCards from "./TestimonialCarousel";
+import TestimonialsMarquee from "./TestimonialsMarquee";
 
 const IndexPage = () => {
   return (
@@ -152,17 +154,17 @@ const IndexPage = () => {
                 {
                   title: "Create & verify",
                   desc: "Sign up and complete KYC for secure access.",
-                  icon: "ti-user-check",
+                  icon: "person-check",
                 },
                 {
                   title: "Fund your wallet",
                   desc: "Deposit crypto or stablecoins, 24/7.",
-                  icon: "ti-wallet",
+                  icon: "wallet",
                 },
                 {
                   title: "Invest or Trade",
                   desc: "Pick a plan (DCA/rebalance) or use our charts.",
-                  icon: "ti-rocket",
+                  icon: "rocket",
                 },
               ].map((s, i) => (
                 <div
@@ -171,8 +173,11 @@ const IndexPage = () => {
                   data-aos="zoom-in"
                   data-aos-delay={i * 150}>
                   <div className="nb3-bg cus-rounded-1 text-center py-8 px-6 h-100">
-                    <div className="d-center nb4-bg rounded-circle p-4 mx-auto">
-                      <i className={`ti ${s.icon} fs-three p1-color`} />
+                    <div className="d-center col-2 nb4-bg rounded-circle p-4 mx-auto">
+                      <i
+                        className={`bi bi-${s.icon} fs-three p1-color`}
+                        aria-hidden="true"
+                      />
                     </div>
                     <h5 className="mt-5 mb-3">{s.title}</h5>
                     <p className="mx-ch">{s.desc}</p>
@@ -276,7 +281,7 @@ const IndexPage = () => {
         </section>
 
         {/* NEW: Featured assets */}
-        <section className="pt-100 pb-100 position-relative z-0">
+        <section className="pt-50 pb-50 position-relative z-0">
           <div className="container">
             <div
               className="d-flex flex-wrap justify-content-between align-items-end mb-8"
@@ -297,22 +302,22 @@ const IndexPage = () => {
                 {
                   sym: "BTC",
                   name: "Bitcoin",
-                  img: "/coins/btc.png",
+                  img: "/icons/btc.png",
                 },
                 {
                   sym: "ETH",
                   name: "Ethereum",
-                  img: "/new-assets/images/coins/eth.png",
+                  img: "/icons/eth 2.png",
                 },
                 {
                   sym: "SOL",
                   name: "Solana",
-                  img: "/new-assets/images/coins/sol.png",
+                  img: "/icons/sol.png",
                 },
                 {
                   sym: "XRP",
                   name: "XRP",
-                  img: "/new-assets/images/coins/xrp.png",
+                  img: "/icons/xrp.png",
                 },
               ].map((c, i) => (
                 <div
@@ -660,6 +665,8 @@ const IndexPage = () => {
             </div>
             <div className="row" data-aos="fade-up" data-aos-delay="100">
               <div className="col-12">
+                <TestimonialsMarquee speed={38} />
+                {/* <TestimonialsCards /> */}
                 <div className="swiper common-slider1 cus-rounded-1 d-center align-items-end align-items-xxl-center">
                   <div className="swiper-wrapper">
                     {/* your existing slides */}
@@ -772,19 +779,8 @@ const IndexPage = () => {
           </div>
         </section>
 
-        {/* Risk notice */}
-        <section className="a2-bg pt-6 pb-6" data-aos="fade-up">
-          <div className="container">
-            <p className="fs-seven nb4-xxl-color mx-ch mx-auto text-center">
-              Crypto assets are volatile and can lose value. Nothing here is
-              financial advice. Do your own research and only invest what you
-              can afford to lose.
-            </p>
-          </div>
-        </section>
-
         {/* Final CTA */}
-        <section className="pt-100 pb-120 position-relative z-0">
+        <section className="pt-20 pb-20 position-relative z-0">
           <div className="container">
             <div
               className="nb3-bg cus-rounded-1 p-6 p-lg-10 d-flex flex-column flex-lg-row align-items-center justify-content-between"
@@ -797,10 +793,10 @@ const IndexPage = () => {
                 </p>
               </div>
               <div className="d-flex gap-3">
-                <a href="/sign-up" className="cmn-btn">
+                <a href="/sign-up" className="cmn-btn p-2 ">
                   Create account
                 </a>
-                <a href="/market-data" className="cmn-btn outline_btn">
+                <a href="/market-data" className="cmn-btn outline_btn p-2 ">
                   See markets
                 </a>
               </div>
