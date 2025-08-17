@@ -12,8 +12,10 @@
 
 /* ===== Brand + Core Tokens ===== */
 :root {
-  --body-font: "Geist", sans-serif;
-  --head-font: "Open Sans", sans-serif;
+  /* --body-font: "Geist", sans-serif; */
+  --body-font: "Manrope", sans-serif;
+  /* --head-font: "Open Sans", sans-serif; */
+  --head-font: "Manrope", sans-serif;
   --transition: all 0.5s ease-in-out;
 
   /* Brand */

@@ -11,6 +11,8 @@ export default function MarketingLayout({ children }) {
     <html
       lang="en"
       style={{
+        " --body-font": "Manrope, sans-serif",
+        "--head-font": "Manrope, sans-serif",
         /* inline custom props trump later styles */
         "--brand": "249,183,7",
         "--brand-hex": "#f9b707",
@@ -21,7 +23,8 @@ export default function MarketingLayout({ children }) {
         "--bs-link-color": "#f9b707",
         "--bs-link-hover-color": "#d39f06",
       }}
-      className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      // className={`${GeistSans.variable} ${GeistMono.variable}`}
+    >
       {/* Optional shared header/footer for marketing pages can go here */}
 
       {children}

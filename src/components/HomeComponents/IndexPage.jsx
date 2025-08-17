@@ -385,17 +385,17 @@ const IndexPage = () => {
                 {
                   title: "Security first",
                   desc: "Two-factor security, wallet controls, and withdrawal checks.",
-                  icon: "ti-lock",
+                  icon: "lock",
                 },
                 {
                   title: "480,000+ clients",
                   desc: "Beginner friendly onboarding with advanced tools for pros.",
-                  icon: "ti-users",
+                  icon: "person",
                 },
                 {
                   title: "Real-time insights",
                   desc: "Track prices, set alerts, and monitor your portfolio live.",
-                  icon: "ti-chart-line",
+                  icon: "bar-chart",
                 },
               ].map((card, i) => (
                 <div
@@ -404,8 +404,8 @@ const IndexPage = () => {
                   data-aos="zoom-in-up"
                   data-aos-delay={i * 150}>
                   <div className="provide-world__card nb3-bg text-center cus-rounded-1 py-5 py-lg-10 px-4 px-lg-9 h-100">
-                    <span className="provide-card__icon d-center nb4-bg p-4 rounded-circle mx-auto">
-                      <i className={`ti ${card.icon} fs-three p1-color`} />
+                    <span className="provide-card__icon d-center col-2 nb4-bg p-4 rounded-circle mx-auto">
+                      <i className={`bi bi-${card.icon} fs-three p1-color`} />
                     </span>
                     <h4 className="mt-5 mb-5">{card.title}</h4>
                     <p>{card.desc}</p>
@@ -554,7 +554,8 @@ const IndexPage = () => {
                               alt="Video"
                             />
                             <a
-                              href="https://www.youtube.com/watch?v=BHACKCNDMW8"
+                              href="https://www.youtube.com/watch?v=rYQgy8QDEBI"
+                              target="_blank"
                               className="popup-video box_10 btn-popup-animation position-absolute d-center rounded-circle">
                               <i className="fa-solid fa-play fs-four" />
                             </a>
