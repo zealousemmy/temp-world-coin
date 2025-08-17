@@ -9,6 +9,7 @@ import {
   getWallet,
   getPlans,
 } from "@/redux/features/profile/profile_service_syn";
+import { FaCheck } from "react-icons/fa6";
 
 const PlansDisplay = () => {
   const dispatch = useDispatch();
@@ -67,8 +68,8 @@ const PlansDisplay = () => {
   return (
     <Slider {...settings} className="row">
       {plans?.map((plan, key) => (
-        <div className="col-lg-4 col-sm-6 col-md-6 text-center">
-          <div className="card" key={key}>
+        <div className="col-lg-4 col-sm-6 col-md-6  text-center">
+          <div style={{ height: "520px" }} className="card " key={key}>
             <div>
               <img
                 src="/icons/BitcoinIcon4.png"
@@ -77,24 +78,50 @@ const PlansDisplay = () => {
                 style={{ width: "50px" }}
               />
             </div>
-            <div className="card-body d-grid gap-2">
-              <h6 className="card-title" style={{ textTransform: "uppercase" }}>
-                {plan?.plan} Crypto Plan
-              </h6>
-              <h2 className="card-title">{plan?.percent}%</h2>
-              <p>Short term 6 months/Long term 1 year.</p>
-              <p className="card-text">
+            <div className="card-body d-flex flex-column items-start justify-between ">
+              <div className=" w-[100%] ">
+                <h6
+                  className="card-title w-[100%] "
+                  style={{
+                    textTransform: "uppercase",
+                    textAlign: "center",
+                  }}>
+                  {plan?.plan}
+                </h6>
+
+                <h6 className="card-title ">
+                  <span className="text-[#f9b707] text-[25px] ">
+                    {plan?.percent}%
+                  </span>{" "}
+                  <span>Weekly ROI</span>
+                </h6>
+              </div>
+              <div>
+                <h2 className="card-title">
+                  From $ {plan?.amount} to ${" "}
+                  {plan?.max > 100000 ? "Unlimited" : plan?.max}
+                </h2>
+                <p>{plan?.terms}</p>
+              </div>
+              <ul>
+                {plan?.benefits?.map((benefit, index) => (
+                  <li
+                    key={index}
+                    className="text-left d-flex items-center gap-[0.5rem] card-tex">
+                    <FaCheck color="#f9b707" />
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+              {/* <p className="card-text">
                 {" "}
                 Enjoy your investment with Bitcoin and Ethereum growing every
                 day.
-              </p>
-              <h6 className="card-title">
-                From $ {plan?.amount} to ${" "}
-                {plan?.max > 50000 ? "Unlimited" : plan?.max}
-              </h6>
+              </p> */}
+
               <a
                 href={`/dashboard/investment-plans/${plan?.plan}`}
-                className="btn btn-primary">
+                className="btn btn-primary w-[100%] ">
                 Invest now
               </a>
             </div>

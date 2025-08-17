@@ -48,15 +48,15 @@ const IndexPage = () => {
                       Crypto investing made simple
                     </span>
 
-                    <h1 className="display-tw nb4-xxl-color mb-5 mb-lg-6">
+                    <h1 className="display-two  nb4-xxl-color mb-5 mb-lg-6">
                       Auto-invest and trade Bitcoin and top crypto
                     </h1>
 
-                    <p className="fs-six-up fw_500 nb4-xxl-color">
+                    <h3 className="fs-six-up fw_500 nb4-xxl-color">
                       Choose automated plans or trade on live charts. Fund your
                       wallet, pick a strategy, and track performance in real
                       time.
-                    </p>
+                    </h3>
 
                     <div className="d-inline-flex flex-wrap gap-4 gap-lg-10 align-items-center mt-8 mt-lg-10">
                       <a

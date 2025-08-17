@@ -9,6 +9,7 @@ import {
   getPlans,
 } from "@/redux/features/profile/profile_service_syn";
 import { useDispatch, useSelector } from "react-redux";
+import { FaCheck } from "react-icons/fa6";
 
 const HomePlansDisplay = () => {
   const dispatch = useDispatch();
@@ -79,21 +80,49 @@ const HomePlansDisplay = () => {
                 style={{ width: "50px" }}
               />
             </div>
-            <div className="card-body d-grid gap-2">
-              <h6 className="card-title" style={{ textTransform: "uppercase" }}>
-                {plan?.plan} Crypto Plan
-              </h6>
-              <h2 className="card-title">{plan?.percent}%</h2>
-              <p>Short term 6 months/Long term 1 year.</p>
-              <p className="card-text">
-                {" "}
-                Enjoy your investment with Bitcoin and Ethereum growing every
-                day.
-              </p>
-              <h6 className="card-title">
-                From $ {plan?.amount} to ${" "}
-                {plan?.max > 50000 ? "Unlimited" : plan?.max}
-              </h6>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                height: "350px",
+              }}
+              className="card-body ">
+              <div className=" w-[100%] ">
+                <h6
+                  className="card-title w-[100%] "
+                  style={{
+                    textTransform: "uppercase",
+                    textAlign: "center",
+                  }}>
+                  {plan?.plan}
+                </h6>
+
+                <h6 className="card-title ">
+                  <span style={{ color: "#f9b707", fontSize: "20px" }}>
+                    {plan?.percent}%
+                  </span>{" "}
+                  <span>Weekly ROI</span>
+                </h6>
+              </div>
+              <div>
+                <h4 className="card-title">
+                  From $ {plan?.amount} to ${" "}
+                  {plan?.max > 100000 ? "Unlimited" : plan?.max}
+                </h4>
+                <p>{plan?.terms}</p>
+              </div>
+
+              <ul>
+                {plan?.benefits?.map((benefit, index) => (
+                  <li
+                    key={index}
+                    className="text-left d-flex items-center gap-[0.5rem] card-tex">
+                    <FaCheck color="#f9b707" />
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
               <a href={`/sign-in`} className=" mt-6 btn btn-secondary">
                 Invest now
               </a>
