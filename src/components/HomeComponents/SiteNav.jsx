@@ -34,7 +34,7 @@ export default function SiteNav() {
   return (
     <header className="navshell">
       <div className="navwrap">
-        <div className="navbar">
+        <div className="my-navbar">
           {/* Brand (left) */}
           <Link href="/" className="brand" aria-label="World Coin Home">
             <img src="/w-c-removebg-preview.png" alt="" className="brandLogo" />

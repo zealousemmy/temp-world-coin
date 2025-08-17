@@ -34,7 +34,7 @@ export default function ReferralBonusSection() {
           <div className="row gy-6 gy-xxl-0">
             <div className="col-md-6 col-xxl-4">
               <div className="provide-world__card nb3-bg text-center cus-rounded-1 py-5 py-lg-10 px-4 px-lg-9">
-                <span className="provide-card__icon d-center nb4-bg p-4 rounded-circle mx-auto">
+                <span className="provide-card__icon d-center col-2 nb4-bg p-4 rounded-circle mx-auto">
                   <i className="bi bi-person-circle fs-2 text-primary"></i>
                 </span>
                 <h4 className="mt-5 mb-5">Share Your Code</h4>
@@ -43,7 +43,7 @@ export default function ReferralBonusSection() {
             </div>
             <div className="col-md-6 col-xxl-4">
               <div className="provide-world__card nb3-bg text-center cus-rounded-1 py-5 py-lg-10 px-4 px-lg-9">
-                <span className="provide-card__icon d-center nb4-bg p-4 rounded-circle mx-auto">
+                <span className="provide-card__icon d-center col-2 nb4-bg p-4 rounded-circle mx-auto">
                   <i className="bi bi-cash-stack fs-2 text-success "></i>
                 </span>
                 <h4 className="mt-5 mb-5">Someone Invests</h4>
@@ -55,7 +55,7 @@ export default function ReferralBonusSection() {
             </div>
             <div className="col-md-6 col-xxl-4">
               <div className="provide-world__card nb3-bg text-center cus-rounded-1 py-5 py-lg-10 px-4 px-lg-9">
-                <span className="provide-card__icon d-center nb4-bg p-4 rounded-circle mx-auto">
+                <span className="provide-card__icon col-2 d-center nb4-bg p-4 rounded-circle mx-auto">
                   <i className="bi bi-star fs-2 text-warning"></i>
                 </span>
                 <h4 className="mt-5 mb-5">Earn 10% Bonus</h4>

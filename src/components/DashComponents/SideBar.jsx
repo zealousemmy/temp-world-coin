@@ -1,6 +1,7 @@
 import React from "react";
 
 const SideBar = ({ show, handleHideSidebar }) => {
+  const [subClass, setSubClass] = React.useState(false);
   return (
     <aside
       className={
@@ -134,7 +135,8 @@ const SideBar = ({ show, handleHideSidebar }) => {
               <a
                 className="nav-link"
                 data-bs-toggle="collapse"
-                href="#sidebar-auth"
+                href="#"
+                onClick={() => setSubClass(!subClass)}
                 role="button"
                 aria-expanded="false"
                 aria-controls="sidebar-user">
@@ -170,7 +172,7 @@ const SideBar = ({ show, handleHideSidebar }) => {
                 </i>
               </a>
               <ul
-                className="sub-nav collaps"
+                className={subClass ? "sub-nav collapse" : "sub-nav collaps"}
                 id="sidebar-auth"
                 data-bs-parent="#sidebar">
                 <li className="nav-item">

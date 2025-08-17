@@ -71,7 +71,7 @@ const PlansDisplay = () => {
           <div className="card" key={key}>
             <div>
               <img
-                src="/main-assets/images/icons/BitcoinIcon4.png"
+                src="/icons/BitcoinIcon4.png"
                 alt="Bitcoin Icon"
                 className="card-img mx-auto"
                 style={{ width: "50px" }}
