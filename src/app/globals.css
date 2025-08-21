@@ -128,3 +128,10 @@ body {
     animation: none;
   }
 }
+
+.plan-card-colored-text {
+  color: #f9b707 !important;
+}
+.provide-world .provide-world__card:hover .plan-card-colored-text {
+  color: #0000 !important;
+}

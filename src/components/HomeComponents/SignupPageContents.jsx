@@ -83,7 +83,7 @@ const SignupPageContents = () => {
         <div className="row align-items-center justify-content-center justify-content-xl-start">
           <div className="col-12 col-sm-10 col-md-6">
             <div className="welcome alt-color text-center text-md-start pt-120 pb-120 position-relative z-0">
-              <h1 className="display-one">Welcome Back!</h1>
+              <h1 className="display-one">Start Investing!</h1>
             </div>
           </div>
           <div className="col-12 col-md-6 col-lg-5 col-xxl-5 offset-xxl-1 text-center ms-xl-auto">
